@@ -70,7 +70,7 @@ class PostsController {
    * @param  {Object}   req  Express request object
    * @param  {Object}   res  Express response object
    * @param  {Function} next Call next in middleware chain
-   * @return {Promise}       Resolves with deleted post
+   * @return {Promise}       Resolves with deleted posts
    */
   delete (req, res, next) {
     const { id } = req.params

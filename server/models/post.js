@@ -9,6 +9,10 @@ const PostSchema = new Schema({
   content: {
     type: String,
     required: [true, 'A content body is required.']
+  },
+  author: {
+    type: Schema.Types.ObjectId,
+    ref: 'user'
   }
 })
 
