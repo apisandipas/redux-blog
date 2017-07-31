@@ -1,24 +1,30 @@
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+
 module.exports = {
   entry: [
     './src/index.js'
   ],
   output: {
-    path: __dirname,
+    path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
   },
   module: {
     rules: [
       {
-        exclude: /node_modules/,
-        loader: 'babel-loader' ,
-        query: {
-          presets: ['react', 'es2015', 'stage-1']
-        }
+        use: 'babel-loader',
+        test: /\.js$/,
+        exclude: /node_modules/
       }
     ]
   },
   devServer: {
     historyApiFallback: true,
-    contentBase: './'
-  }
+    contentBase: './dist'
+  },
+   plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html'
+    })
+   ]
 }
