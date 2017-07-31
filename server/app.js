@@ -17,8 +17,27 @@ if (process.env.NODE_ENV === 'development') {
 
 routes(app)
 
+// Development Error Handler - Prints stack trace 
+if (process.env.NODE_ENV === 'development') {
+  app.use((err, req, res, next) => {
+    err.stack = err.stack || ''
+    const errorDetails = {
+      message: err.message,
+      status: err.status,
+      stackHighlighted: err.stack.replace(/[a-z_-\d]+.js:\d+:\d+/gi, '<mark>$&</mark>')
+    }
+    res.status(err.status || 500)
+    res.json(errorDetails)
+  })
+}
+
+// production error handler
 app.use((err, req, res, next) => {
-  res.status(422).send({ error: err.message })
+  res.status(err.status || 500);
+  res.render('error', {
+    message: err.message,
+    error: {}
+  });
 })
 
 module.exports = app

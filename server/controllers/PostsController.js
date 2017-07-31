@@ -20,20 +20,6 @@ class PostsController {
   }
 
   /**
-   * Creates a new post and returns it
-   * @param  {Object}   req  Express request object
-   * @param  {Object}   res  Express response object
-   * @param  {Function} next Call next in middleware chain
-   * @return {Promise}       Resolves with newly create post
-   */
-  create (req, res, next) {
-    const postProps = req.body
-    Post.create(postProps)
-     .then((post) => res.send(post))
-     .catch(next)
-  }
-
-  /**
    * Queries a single post by id
    * @param  {Object}   req  Express request object
    * @param  {Object}   res  Express response object
@@ -49,21 +35,35 @@ class PostsController {
   }
 
   /**
+   * Creates a new post and returns it
+   * @param  {Object}   req  Express request object
+   * @param  {Object}   res  Express response object
+   * @param  {Function} next Call next in middleware chain
+   * @return {Promise}       Resolves with newly create post
+   */
+  // create (req, res, next) {
+  //   const postProps = req.body
+  //   Post.create(postProps)
+  //    .then((post) => res.send(post))
+  //    .catch(next)
+  // }
+
+  /**
    * Updates a post with the given id
    * @param  {Object}   req  Express request object
    * @param  {Object}   res  Express response object
    * @param  {Function} next Call next in middleware chain
    * @return {Promise}       Resolves with updated post
    */
-  update (req, res, next) {
-    const { id } = req.params
-    const postProps = req.body
+  // update (req, res, next) {
+  //   const { id } = req.params
+  //   const postProps = req.body
 
-    Post.findByIdAndUpdate(id, postProps)
-      .then(() => Post.findById({ _id: id }))
-      .then((post) => res.send(post))
-      .catch(next)
-  }
+  //   Post.findByIdAndUpdate(id, postProps)
+  //     .then(() => Post.findById({ _id: id }))
+  //     .then((post) => res.send(post))
+  //     .catch(next)
+  // }
 
   /**
    * Deletes a post with the given id
@@ -72,12 +72,12 @@ class PostsController {
    * @param  {Function} next Call next in middleware chain
    * @return {Promise}       Resolves with deleted posts
    */
-  delete (req, res, next) {
-    const { id } = req.params
-    Post.findByIdAndRemove(id)
-      .then((post) => res.status(204).send(post))
-      .catch(next)
-  }
+  // delete (req, res, next) {
+  //   const { id } = req.params
+  //   Post.findByIdAndRemove(id)
+  //     .then((post) => res.status(204).send(post))
+  //     .catch(next)
+  // }
 }
 
 module.exports = new PostsController()

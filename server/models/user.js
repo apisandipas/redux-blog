@@ -8,6 +8,7 @@ const UserSchema = new Schema({
     unique: true, 
     lowercase: true 
   },
+  name: String,
   password: String,
   posts: [{
     type: Schema.Types.ObjectId,

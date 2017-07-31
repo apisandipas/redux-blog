@@ -38,7 +38,7 @@ describe('Posts Controller', () => {
     })
   })
 
-  it('POST to /api/posts creates a new post', (done)  => {
+  xit('POST to /api/posts creates a new post', (done)  => {
     Post.count().then((beforeCount) => {
       request(app)
         .post('/api/posts')
@@ -52,7 +52,7 @@ describe('Posts Controller', () => {
     })
   })
 
-  it('PUT to /api/posts/:id edit an existing post', (done) => {
+  xit('PUT to /api/posts/:id edit an existing post', (done) => {
     const post = new Post({ title: 'Test Title 2', content })
 
     post.save().then(() => {
@@ -69,7 +69,7 @@ describe('Posts Controller', () => {
     })
   })
 
-  it('DELETE to /api/posts/:id removes an existing post', (done) => {
+  xit('DELETE to /api/posts/:id removes an existing post', (done) => {
     const post = new Post({ title: 'Test Title 3', content })
 
     post.save().then(() => {
